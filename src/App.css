@@ -1,38 +1,199 @@
-.App {
-  text-align: center;
+body {
+    overflow-x: hidden;
+}
+.Main {
+    min-height: 100vh;
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(-45deg, rgb(87, 86, 86), rgb(0, 0, 0));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+  
+.Content {
+    margin-top: 15vh;
+
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container-products {
+    width: 100%;
+    display: flex;  
+    background-image: linear-gradient(-45deg, rgb(87, 86, 86), rgb(0, 0, 0));
+    
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.lista-filtros{
+    padding-left: 20px;
+    width: 25%;
+    min-height: 100vh;
+    padding-top: 15vh;
+    margin-bottom: 20px;
+    display: flex ;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.lista-filtros form {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.lista-filtros input,
+.lista-filtros select,
+.lista-filtros textarea,
+.lista-filtros button {
+    padding: 5px;
+    font-size: 16px;
+    width: 100%; 
+    box-sizing: border-box;
+    border-radius: 0.3em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.lista-filtros textarea {
+    height: 100px;
+}
+
+.contact-form {
+    margin-top: 20px;
+    align-items: center;
+}
+
+.lista-filtros button {
+
+    background-color: #bebebe; 
+    color: rgb(0, 0, 0); 
+    border: none; 
+    cursor: pointer; 
+}
+
+.lista-filtros button:hover {
+    background-color: #ff0015; 
+}
+.product-list {
+    width: 75%;
+    margin-top: 20vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    
+}
+
+.product-item {
+    cursor: pointer;
+    text-align: center;
+}
+.product-item:hover .product-image{
+    transform: scale(1.05); 
+    transition: transform 0.5s ease;
+    
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 0.3em;
+
+}
+
+.product-image-wrapper {
+    /* position: relative; */
+    display: inline-block;
+    
+}
+
+h3 {
+    font-size: 18px;
+    margin: 10px 0 0;
+    color: black;
+}
+
+.image-controls {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-item:hover .image-controls {
+    opacity: 1;
+}
+
+.image-controls button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.788);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: rgb(175, 172, 172);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.input {
+    border-radius: 5px;
+    margin: 5px;
+    height: 30px;
+    width: 250px;
+    font-size: 16px;
+
+}
+
+.botao-login {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 5px;
+    margin: 5px;
+    height: 30px;
+    width: 250px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.botao-login:hover {
+    background-color: #f30303;
+
+}
+
+
+.contato {
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
