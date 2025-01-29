@@ -103,7 +103,7 @@ body {
 }
 
 .product-image-wrapper {
-    /* position: relative; */
+    position: relative;
     display: inline-block;
     
 }
@@ -113,7 +113,7 @@ h3 {
     margin: 10px 0 0;
     color: black;
 }
-
+ 
 .image-controls {
     position: absolute;
     bottom: 10px;
@@ -128,12 +128,14 @@ h3 {
     opacity: 1;
 }
 
+
 .image-controls button {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+
 }
 
 .modal-overlay {

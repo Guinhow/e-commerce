@@ -54,7 +54,7 @@ const LoginModal = ({ onClose, onLogin }) => {
   );
 };
 
-const Header = ({ searchTerm, handleSearch ,handleSearchEnter  }) => {
+const Header = ({ searchTerm, handleSearch ,handleSearchEnter, onCarrinhoClick  }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -82,7 +82,7 @@ function logout() {
         <p>copatto</p>
       </div>
       <nav className="navbar">
-        <input type="text" className="search-bar" placeholder="Pesquisar..." value={searchTerm} onChange={handleSearch} onKeyDown={handleSearchEnter} />
+        {/* <input type="text" className="search-bar" placeholder="Pesquisar..." value={searchTerm} onChange={handleSearch} onKeyDown={handleSearchEnter} /> */}
         <ul className="lista">
           {subMenu.map((x) => (<li className='itens' key={x.name}>
             <Link to={x.path} className='menu-link'>{x.name}</Link>
@@ -91,7 +91,7 @@ function logout() {
       </nav>
       <div className="usuario">
         <img src={perfil} className="itens" alt="perfil" onClick={() => setIsModalOpen(true)} />
-        <img src={sacola} className="itens" alt="sacola" />
+        <img src={sacola} className="itens" alt="sacola" onClick={onCarrinhoClick}/>
         <button onClick={logout} className="itens botao">Logout</button>
       </div>
       {isModalOpen && (

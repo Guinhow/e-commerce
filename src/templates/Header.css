@@ -7,6 +7,7 @@
     justify-content: space-between;
     display: flex;
     padding: 0;
+    z-index: 1000;
 }
 
 .navbar {
@@ -40,13 +41,13 @@
     display: flex;
     list-style: none;
     padding-right: 230px;
+    margin-top: 50px;
     
 }
   
 .itens  {
     margin-right: 20px;
     color: white;
-    font-size: 20px;
     letter-spacing: 3px;
     cursor: pointer;
     text-decoration: none;

@@ -1,0 +1,45 @@
+.carrinho-lateral {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 400px;
+    height: 100%;
+    background-color: rgb(235, 233, 233);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .carrinho-lateral.open {
+    right: 0; 
+  }
+  
+  .carrinho-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #333333;
+  }
+  
+  .carrinho-conteudo {
+    padding: 1rem;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .carrinho-item span {
+    padding: 5px;
+  }  
+
+  .carrinho-total {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+  }

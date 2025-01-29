@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { pesquisa } from './search.js'
+import { pesquisa } from './search.js';
 import Filtros from './Filtros.js';
+import ModalProduto from './modalProduto.js';
+import '../App.css';
 
-const Products = () => {
+const Products = ({ adicionarAoCarrinho }) => { 
     const [filteredProducts, setFilteredProducts] = useState(pesquisa);
     const [currentImageIndex, setCurrentImageIndex] = useState({});
+    const [modalOpen, setModalOpen] = useState(false);
+    const [produtoSelecionado, setProdutoSelecionado] = useState(null);
 
     const applyFilters = (filters) => {
         const { category, color, minPrice, maxPrice } = filters;
@@ -45,7 +49,14 @@ const Products = () => {
                         const currentIdx = currentImageIndex[produto.id] || 0;
 
                         return (
-                            <div key={produto.id} className="product-item">
+                            <div
+                                key={produto.id}
+                                className="product-item"
+                                onClick={() => {
+                                    setProdutoSelecionado(produto); 
+                                    setModalOpen(true); 
+                                }}
+                            >
                                 <div className="product-image-wrapper">
                                     <img
                                         src={images[currentIdx]}
@@ -53,10 +64,10 @@ const Products = () => {
                                         className="product-image"
                                     />
                                     <div className="image-controls">
-                                        <button onClick={() => prevImage(produto.id, images.length)}>
+                                        <button onClick={(e) => { e.stopPropagation(); prevImage(produto.id, images.length); }}>
                                             &lt;
                                         </button>
-                                        <button onClick={() => nextImage(produto.id, images.length)}>
+                                        <button onClick={(e) => { e.stopPropagation(); nextImage(produto.id, images.length); }}>
                                             &gt;
                                         </button>
                                     </div>
@@ -68,11 +79,19 @@ const Products = () => {
                     })}
                 </div>
             </div>
+            {produtoSelecionado && (
+                <ModalProduto
+                    produto={produtoSelecionado}
+                    isOpen={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    addToCart={(produto) => {
+                        adicionarAoCarrinho(produto); 
+                        // setModalOpen(false); 
+                    }}
+                />
+            )}
         </>
     );
-
 };
 
 export default Products;
-
-
