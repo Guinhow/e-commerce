@@ -1,8 +1,7 @@
 import React from "react";
 import "./carrinhoLateral.css";
 
-
-const CarrinhoLateral = ({ isOpen, onClose, itens }) => {
+const CarrinhoLateral = ({ isOpen, onClose, itens , removeFromCart , clearCart }) => {
 
   const calcularTotal = () => {
     return itens.reduce((acc, item) => {
@@ -29,14 +28,24 @@ const CarrinhoLateral = ({ isOpen, onClose, itens }) => {
                 <span>{item.nome}</span>
                 <span>{item.quantidade} Un</span>
                 <span>Valor R$ {(item.preço * item.quantidade).toFixed(2)}</span>
+                <button className="trash-icon" 
+                onClick={() => {
+                  removeFromCart(item.id);
+                }}>🗑️</button>
               </li>
             ))}
           </ul>
           
         )}
          <div className="carrinho-total">
-              <strong>Total:</strong> R$ {calcularTotal().toFixed(2)}
-            </div>
+            <strong>Total:</strong> R$ {calcularTotal().toFixed(2)}
+          </div>
+          <div className="botoes">
+          {itens.length > 0 && (
+            <button className="add-to-cart-button" onClick={clearCart}>Limpar carrinho</button> )}
+            <button className="add-to-cart-button pagamento">Ir para pagamento</button>
+         
+          </div>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export const CarrinhoProvider = ({ children }) => {
   const addToCart = (produto) => {
     setCarrinho((prev) => [...prev, produto]);
   };
-
+  
   const removeFromCart = (id) => {
     setCarrinho((prev) => prev.filter((item) => item.id !== id));
   };

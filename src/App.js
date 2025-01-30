@@ -9,6 +9,7 @@ import Categories from './templates/Categories.js';
 import ContactForm from './templates/Contactform.js';
 import CarrinhoLateral from './templates/carrinhoLateral';
 
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,6 +32,23 @@ const App = () => {
         return [...prevItens, { ...produto, quantidade: 1 }];
       }
     });
+  };
+
+  const removeFromCart = (id) => {
+
+    setCarrinhoItens((prevItens) => {
+      return prevItens
+        .map((item) =>
+          item.id === id ? { ...item, quantidade: item.quantidade - 1 } : item
+        )
+        .filter((item) => item.quantidade > 0);
+    });
+  };
+
+
+  const clearCart = () => {
+
+    setCarrinhoItens([]);
   };
 
   const handleSearch = (event) => {
@@ -71,6 +89,8 @@ const App = () => {
           isOpen={isCarrinhoOpen}
           onClose={() => setIsCarrinhoOpen(false)} 
           itens={carrinhoItens}
+          removeFromCart={removeFromCart} 
+          clearCart={clearCart}
         />
         <main className="Main">
           <Routes>
