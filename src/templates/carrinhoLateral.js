@@ -1,7 +1,11 @@
 import React from "react";
 import "./carrinhoLateral.css";
+import { useNavigate } from "react-router-dom";
+
 
 const CarrinhoLateral = ({ isOpen, onClose, itens , removeFromCart , clearCart }) => {
+  const navigate = useNavigate();
+
 
   const calcularTotal = () => {
     return itens.reduce((acc, item) => {
@@ -43,8 +47,7 @@ const CarrinhoLateral = ({ isOpen, onClose, itens , removeFromCart , clearCart }
           <div className="botoes">
           {itens.length > 0 && (
             <button className="add-to-cart-button" onClick={clearCart}>Limpar carrinho</button> )}
-            <button className="add-to-cart-button pagamento">Ir para pagamento</button>
-         
+            <button className="add-to-cart-button pagamento"  onClick={() => {onClose() ;navigate("/pagamento")}}>Ir para pagamento</button>
           </div>
       </div>
     </div>

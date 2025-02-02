@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate , useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Header from './templates/Header';
 import Home from './templates/Home.js';
@@ -8,6 +8,7 @@ import Contato from './templates/Contact.js';
 import Categories from './templates/Categories.js';
 import ContactForm from './templates/Contactform.js';
 import CarrinhoLateral from './templates/carrinhoLateral';
+import Pagamento from './templates/pagamento.js';
 
 
 const App = () => {
@@ -21,27 +22,33 @@ const App = () => {
     setCarrinhoItens((prevItens) => {
 
       const itemExistente = prevItens.find((item) => item.id === produto.id);
+      let novoCarrinho;
+
 
       if (itemExistente) {
-
-        return prevItens.map((item) =>
+          novoCarrinho = prevItens.map((item) =>
           item.id === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item
         );
       } else {
-
         return [...prevItens, { ...produto, quantidade: 1 }];
+        
       }
+      localStorage.setItem("carrinho", JSON.stringify(novoCarrinho)); 
+        return novoCarrinho;
     });
   };
 
-  const removeFromCart = (id) => {
-
+ 
+  const removeFromCart = (produtoId) => {
     setCarrinhoItens((prevItens) => {
-      return prevItens
+      const novoCarrinho = prevItens
         .map((item) =>
-          item.id === id ? { ...item, quantidade: item.quantidade - 1 } : item
+          item.id === produtoId ? { ...item, quantidade: item.quantidade - 1 } : item
         )
         .filter((item) => item.quantidade > 0);
+  
+      localStorage.setItem("carrinho", JSON.stringify(novoCarrinho)); 
+      return novoCarrinho;
     });
   };
 
@@ -63,15 +70,17 @@ const App = () => {
 
   const logout = () => {
     setIsAuthenticated(false);
+    return <Navigate to="/" />
+    
   };
 
   const ProtectedRoute = ({ children }) => {
     const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
 
     if (!isAuthenticated) {
-      alert("Você precisa estar logado para acessar esta página.");
-      return <Navigate to="/" />; 
-  }
+      alert("Você precisa estar logado para acessar esta página. Clique em OK para voltar.")
+      return <Navigate to="/" />;
+    }
     return children;
   };
 
@@ -99,6 +108,7 @@ const App = () => {
             <Route path="/Products" element={<Products searchTerm={searchQuery} adicionarAoCarrinho={adicionarAoCarrinho} />} />
             <Route path="/Contact" element={<Contato />} />
             <Route path="/ContactForm" element={<ContactForm />} />
+            <Route path="/pagamento" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Pagamento /></ProtectedRoute>}/>
           </Routes>
           <div className="Content"> 
           </div>   

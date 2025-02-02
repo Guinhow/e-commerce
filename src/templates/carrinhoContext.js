@@ -7,6 +7,7 @@ export const CarrinhoProvider = ({ children }) => {
 
   const addToCart = (produto) => {
     setCarrinho((prev) => [...prev, produto]);
+    console.log('add ao carrinho')
   };
   
   const removeFromCart = (id) => {

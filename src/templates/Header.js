@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Header.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import Logo from './logo.svg'
 import perfil from '../products/perfil.svg'
 import sacola from '../products/sacola.svg'
@@ -60,7 +60,6 @@ const Header = ({ searchTerm, handleSearch ,handleSearchEnter, onCarrinhoClick  
 
   const handleLoginSuccess = () => {
     alert('Login efetuado com sucesso!');
-    navigate('/');
   };
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -70,8 +69,7 @@ function logout() {
     setIsAuthenticated(false); 
     localStorage.setItem("isAuthenticated", "false"); 
     alert('Logout efetuado com sucesso!');
-    navigate('/');
-  
+    navigate("/")
 };
   
 
