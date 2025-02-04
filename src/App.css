@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 0px;  
+    height: 0px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+}
+
+html, body {
+    overflow-y: auto; 
+    height: 100%;
+}
+
 body {
     overflow-x: hidden;
 }
@@ -24,8 +38,8 @@ body {
     
 
 }
-
 .lista-filtros{
+    margin-top: 20px;
     padding-left: 20px;
     width: 25%;
     min-height: 100vh;

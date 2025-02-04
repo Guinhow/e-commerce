@@ -8,13 +8,23 @@
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: right 0.3s ease;
     z-index: 1000;
+    overflow: auto;
+    box-sizing: border-box; 
+
   }
+.carrinho-lateral::-webkit-scrollbar {
+    width: 0px;
+}
+
+.carrinho-lateral {
+    scrollbar-width: none;
+}
   
-  .carrinho-lateral.open {
+.carrinho-lateral.open {
     right: 0; 
-  }
+}
   
-  .carrinho-header {
+.carrinho-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,4 +79,29 @@
 }
 .pagamento:hover {
   background-color: green;
+}
+.carrinho-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.carrinho-tabela th,
+.carrinho-tabela td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.carrinho-tabela th {
+  background-color: #0c0c0c;
+  color: white;
+  font-weight: bold;
+}
+
+.trash-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
 }

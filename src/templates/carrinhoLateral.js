@@ -26,20 +26,29 @@ const CarrinhoLateral = ({ isOpen, onClose, itens , removeFromCart , clearCart }
         {itens.length === 0 ? (
           <p>Seu carrinho está vazio.</p>
         ) : (
-          <ul>
-            {itens.map((item) => (
-              <li key={item.id} className="carrinho-item">
-                <span>{item.nome}</span>
-                <span>{item.quantidade} Un</span>
-                <span>Valor R$ {(item.preço * item.quantidade).toFixed(2)}</span>
-                <button className="trash-icon" 
-                onClick={() => {
-                  removeFromCart(item.id);
-                }}>🗑️</button>
-              </li>
-            ))}
-          </ul>
-          
+
+          <table className="carrinho-tabela">
+            {/* <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Qnt.</th>
+                <th>Valor</th>
+                <th>Ação</th>
+              </tr>
+            </thead> */}
+            <tbody>
+              {itens.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.nome}</td>
+                  <td>{item.quantidade} Un</td>
+                  <td>R$ {(item.preço * item.quantidade).toFixed(2)}</td>
+                  <td>
+                    <button className="trash-icon" onClick={() => removeFromCart(item.id)}>🗑️</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
          <div className="carrinho-total">
             <strong>Total:</strong> R$ {calcularTotal().toFixed(2)}
