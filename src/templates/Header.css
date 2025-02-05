@@ -2,7 +2,8 @@
     position: fixed;
     height: 13vh;
     min-width: 100vw;
-    background-image: linear-gradient(90deg, rgb(94, 92, 92), black);
+    /* background-image: linear-gradient(90deg, rgb(94, 92, 92), black); */
+    background-color: #6A0DAD ;
     align-items: center;
     justify-content: space-between;
     display: flex;
@@ -26,7 +27,7 @@
     margin-right: 20px; 
     font-size: 16px; 
     width: 80%;
-    color: #1b1b1b; 
+    color: #4A0072 ; 
     background-color: white; 
     transition: border-color 0.3s; 
     margin-bottom: 0px;
@@ -34,7 +35,7 @@
 
 .search-bar:focus {
     outline: none; 
-    border-color: #6d0009; 
+    border-color: #BA68C8 ; 
 }
 
 .lista {
@@ -62,8 +63,7 @@
 }
 
 .botao {
-    border: 2px solid #2f3030;
-    background-color: #2f3030;
+    background-color: #9C27B0  ;
     border-radius: 0.5em;
     transition: all ease-in-out 0.2s;
     font-size: 16px;
@@ -77,7 +77,7 @@
 }
   
 .botao:hover {
-    background-color: #ff0015;
+    background-color: #BA68C8 ;
 }
 .menu-link {
     text-decoration: none; 
@@ -87,7 +87,7 @@
 }
   
 .menu-link:hover {
-    color: #ff0015;
+    color: #BA68C8 ;
 }
 
 .logo {

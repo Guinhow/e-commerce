@@ -34,7 +34,7 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #333;
+    color: #4A0072 ;
 }
 
 
@@ -56,7 +56,7 @@
 
 .modal-details {
     text-align: center;
-    color: black;
+    color: #4A0072 ;
 }
 
 .modal-details h2 {
@@ -72,7 +72,8 @@
 
 
 .add-to-cart-button {
-    background: #222222;
+    background-color: #9C27B0 ;
+    background: #9C27B0 ;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -83,7 +84,7 @@
 }
 
 .add-to-cart-button:hover {
-    background: #ff0015;
+    background: #BA68C8 ;
 }
 .modal-image-wrapper {
     position: relative;
@@ -115,6 +116,3 @@
     transition: background 0.3s;
 }
 
-.image-controls button:hover {
-    background: rgba(0, 0, 0, 0.8);
-}

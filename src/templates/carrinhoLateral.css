@@ -41,7 +41,7 @@
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
-    color: black
+    color: #4A0072 
   }
   .close-button:hover {
     background: none;
@@ -77,6 +77,10 @@
   align-items: center;
   width: 90%;
 }
+.add-to-cart-button {
+  background-color: #9C27B0 ;
+
+}
 .pagamento:hover {
   background-color: green;
 }
@@ -94,7 +98,7 @@
 }
 
 .carrinho-tabela th {
-  background-color: #0c0c0c;
+  background-color: #4A0072 ;
   color: white;
   font-weight: bold;
 }

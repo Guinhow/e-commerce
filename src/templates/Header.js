@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css'
 import { Link , useNavigate} from 'react-router-dom';
 import Logo from './logo.svg'
@@ -18,6 +18,20 @@ const subMenu = [
 const LoginModal = ({ onClose, onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
   
   const handleLogin = () => {
 
@@ -32,8 +46,8 @@ const LoginModal = ({ onClose, onLogin }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}> 
         <h2>Login</h2>
         <input className='input'
           type="text"
@@ -88,7 +102,7 @@ function logout() {
         </ul>
       </nav>
       <div className="usuario">
-        <img src={perfil} className="itens" alt="perfil" onClick={() => setIsModalOpen(true)} />
+        <img src={perfil} className="itens" alt="login" onClick={() => setIsModalOpen(true)} />
         <img src={sacola} className="itens" alt="sacola" onClick={onCarrinhoClick}/>
         <button onClick={logout} className="itens botao">Logout</button>
       </div>

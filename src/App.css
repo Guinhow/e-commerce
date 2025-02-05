@@ -10,6 +10,8 @@
 html, body {
     overflow-y: auto; 
     height: 100%;
+    background-color: 	#EDE7F6 ;
+
 }
 
 body {
@@ -17,8 +19,9 @@ body {
 }
 .Main {
     min-height: 100vh;
-    color: rgb(255, 255, 255);
-    background-image: linear-gradient(-45deg, rgb(87, 86, 86), rgb(0, 0, 0));
+    color: #4A0072 ;
+    /* background-image: linear-gradient(-45deg, rgb(87, 86, 86), rgb(0, 0, 0)); */
+    background-color: 	#EDE7F6 ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,7 +37,8 @@ body {
 .container-products {
     width: 100%;
     display: flex;  
-    background-image: linear-gradient(-45deg, rgb(87, 86, 86), rgb(0, 0, 0));
+    /* background-image: linear-gradient(-45deg, rgb(87, 86, 86), rgb(0, 0, 0)); */
+    background-color: 	#EDE7F6 ;
     
 
 }
@@ -79,14 +83,14 @@ body {
 
 .lista-filtros button {
 
-    background-color: #bebebe; 
-    color: rgb(0, 0, 0); 
+    background-color: #9C27B0 ; 
+    color: white; 
     border: none; 
     cursor: pointer; 
 }
 
 .lista-filtros button:hover {
-    background-color: #ff0015; 
+    background-color: #BA68C8 ; 
 }
 .product-list {
     width: 75%;
@@ -125,7 +129,7 @@ body {
 h3 {
     font-size: 18px;
     margin: 10px 0 0;
-    color: black;
+    color: #4A0072 ;
 }
  
 .image-controls {
@@ -144,12 +148,15 @@ h3 {
 
 
 .image-controls button {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #9C27B0 ;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
 
+}
+.image-controls button:hover {
+    background-color: #BA68C8 ;
 }
 
 .modal-overlay {
@@ -166,7 +173,7 @@ h3 {
 }
 
 .modal {
-    background: rgb(175, 172, 172);
+    background: #D8BFD8 ;
     padding: 20px;
     border-radius: 5px;
     max-width: 400px;
@@ -188,7 +195,7 @@ h3 {
 }
 
 .botao-login {
-    background-color: black;
+    background-color: #9C27B0 ;
     color: aliceblue;
     border-radius: 5px;
     margin: 5px;
@@ -201,7 +208,7 @@ h3 {
 }
 
 .botao-login:hover {
-    background-color: #f30303;
+    background-color: #BA68C8 ;
 
 }
 
