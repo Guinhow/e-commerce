@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Navigate , useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Header from './templates/Header';
 import Home from './templates/Home.js';
@@ -26,19 +26,19 @@ const App = () => {
 
 
       if (itemExistente) {
-          novoCarrinho = prevItens.map((item) =>
+        novoCarrinho = prevItens.map((item) =>
           item.id === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item
         );
       } else {
         return [...prevItens, { ...produto, quantidade: 1 }];
-        
+
       }
-      localStorage.setItem("carrinho", JSON.stringify(novoCarrinho)); 
-        return novoCarrinho;
+      localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+      return novoCarrinho;
     });
   };
 
- 
+
   const removeFromCart = (produtoId) => {
     setCarrinhoItens((prevItens) => {
       const novoCarrinho = prevItens
@@ -46,8 +46,8 @@ const App = () => {
           item.id === produtoId ? { ...item, quantidade: item.quantidade - 1 } : item
         )
         .filter((item) => item.quantidade > 0);
-  
-      localStorage.setItem("carrinho", JSON.stringify(novoCarrinho)); 
+
+      localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
       return novoCarrinho;
     });
   };
@@ -59,11 +59,11 @@ const App = () => {
   };
 
   const handleSearch = (event) => {
-      setSearchTerm(event.target.value.toLowerCase());
+    setSearchTerm(event.target.value.toLowerCase());
   };
 
   const handleSearchEnter = (event) => {
-    if (event.keyCode === 13) { 
+    if (event.keyCode === 13) {
       setSearchQuery(searchTerm);
     }
   };
@@ -71,7 +71,7 @@ const App = () => {
   const logout = () => {
     setIsAuthenticated(false);
     return <Navigate to="/" />
-    
+
   };
 
   const ProtectedRoute = ({ children }) => {
@@ -87,32 +87,32 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Header searchTerm={searchTerm} 
-        handleSearch={handleSearch} 
-        handleSearchEnter={handleSearchEnter} 
-        isAuthenticated={isAuthenticated} 
-        logout={logout} 
-        onCarrinhoClick={() => setIsCarrinhoOpen(true)}
+        <Header searchTerm={searchTerm}
+          handleSearch={handleSearch}
+          handleSearchEnter={handleSearchEnter}
+          isAuthenticated={isAuthenticated}
+          logout={logout}
+          onCarrinhoClick={() => setIsCarrinhoOpen(true)}
         />
         <CarrinhoLateral
           isOpen={isCarrinhoOpen}
-          onClose={() => setIsCarrinhoOpen(false)} 
+          onClose={() => setIsCarrinhoOpen(false)}
           itens={carrinhoItens}
-          removeFromCart={removeFromCart} 
+          removeFromCart={removeFromCart}
           clearCart={clearCart}
         />
         <main className="Main">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Categories" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Categories /></ProtectedRoute>}/>
+            <Route path="/Categories" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Categories /></ProtectedRoute>} />
             <Route path="/Products" element={<Products searchTerm={searchQuery} adicionarAoCarrinho={adicionarAoCarrinho} />} />
             <Route path="/Contact" element={<Contato />} />
             <Route path="/ContactForm" element={<ContactForm />} />
-            <Route path="/pagamento" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Pagamento /></ProtectedRoute>}/>
+            <Route path="/pagamento" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Pagamento /></ProtectedRoute>} />
           </Routes>
-          <div className="Content"> 
-          </div>   
-        </main> 
+          <div className="Content">
+          </div>
+        </main>
       </div>
     </Router>
   );

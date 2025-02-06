@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css'
-import { Link , useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from './logo.svg'
 import perfil from '../products/perfil.svg'
 import sacola from '../products/sacola.svg'
-
-
 
 const subMenu = [
   { name: 'Home', path: '/' },
@@ -34,30 +32,26 @@ const LoginModal = ({ onClose, onLogin }) => {
     };
   }, [onClose]);
 
-  
   const handleLogin = () => {
-    
-      if (username === 'usuario' && password === 'senha') { 
-        onLogin();
-        onClose();
-        localStorage.setItem("isAuthenticated", "true");
-      } else {
-        alert('Usuário ou senha incorretos');
-      }
-    
+    if (username === 'usuario' && password === 'senha') {
+      onLogin();
+      onClose();
+      localStorage.setItem("isAuthenticated", "true");
+    } else {
+      alert('Usuário ou senha incorretos');
+    }
   };
-  function logout() {
 
-    setIsAuthenticated(false); 
-    localStorage.setItem("isAuthenticated", "false"); 
+  function logout() {
+    setIsAuthenticated(false);
+    localStorage.setItem("isAuthenticated", "false");
     alert('Logout efetuado com sucesso!');
     navigate("/")
   };
-  
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}> 
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h2>Login</h2>
         <input className='input'
           type="text"
@@ -74,29 +68,26 @@ const LoginModal = ({ onClose, onLogin }) => {
         <button className='botao-login' onClick={handleLogin}>Entrar</button>
         <button className='botao-login' onClick={onClose}>Fechar</button>
         <button className='botao-login' onClick={logout}>Logout</button>
-
       </div>
     </div>
   );
 };
 
-const Header = ({ searchTerm, handleSearch ,handleSearchEnter, onCarrinhoClick  }) => {
+const Header = ({ searchTerm, handleSearch, handleSearchEnter, onCarrinhoClick }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [menuAberto, setMenuAberto] = useState(false);
 
   const toggleMenu = () => {
-      setMenuAberto(!menuAberto);
+    setMenuAberto(!menuAberto);
   };
 
   const fecharMenu = () => {
-      setMenuAberto(false);
+    setMenuAberto(false);
   };
 
   const handleLoginSuccess = () => {
     alert('Login efetuado com sucesso!');
   };
-
-  
 
   return (
     <div className="header">
@@ -105,7 +96,7 @@ const Header = ({ searchTerm, handleSearch ,handleSearchEnter, onCarrinhoClick  
         <img src={Logo} alt="Logo" />
         <p>copatto</p>
       </div>
-        <nav className={`navbar ${menuAberto ? 'ativo' : ''}`}>
+      <nav className={`navbar ${menuAberto ? 'ativo' : ''}`}>
         <ul className="lista">
           {subMenu.map((x) => (<li className='itens' key={x.name}>
             <Link to={x.path} className='menu-link' onClick={fecharMenu}>{x.name}</Link>
@@ -114,7 +105,7 @@ const Header = ({ searchTerm, handleSearch ,handleSearchEnter, onCarrinhoClick  
       </nav>
       <div className="usuario">
         <img src={perfil} className="itens" alt="login" onClick={() => setIsModalOpen(true)} />
-        <img src={sacola} className="itens" alt="sacola" onClick={onCarrinhoClick}/>
+        <img src={sacola} className="itens" alt="sacola" onClick={onCarrinhoClick} />
       </div>
       {isModalOpen && (
         <LoginModal

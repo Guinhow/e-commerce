@@ -34,41 +34,41 @@ const ContactForm = () => {
     return (
         <div className="lista-filtros contact-form">
             <div>
-            <h1>Fale Conosco!</h1>
+                <h1>Fale Conosco!</h1>
             </div>
-        <form onSubmit={handleSubmit} >
-            <label>
-                Nome:
-                <input
-                    type="text"
-                    name="nome"
-                    value={formData.nome}
-                    onChange={handleChange}
-                    required
-                />
-            </label>
-            <label>
-                Email:
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                />
-            </label>
-            <label>
-                Mensagem:
-                <textarea className='msg-box'
-                    name="mensagem"
-                    value={formData.mensagem}
-                    onChange={handleChange}
-                    required
-                />
-            </label>
-            <button type="submit">Enviar</button>
-            {successMessage && <p>{successMessage}</p>}
-        </form>
+            <form onSubmit={handleSubmit} >
+                <label>
+                    Nome:
+                    <input
+                        type="text"
+                        name="nome"
+                        value={formData.nome}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <label>
+                    Email:
+                    <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <label>
+                    Mensagem:
+                    <textarea className='msg-box'
+                        name="mensagem"
+                        value={formData.mensagem}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <button type="submit">Enviar</button>
+                {successMessage && <p>{successMessage}</p>}
+            </form>
         </div>
     );
 };

@@ -1,75 +1,79 @@
 .carrinho-lateral {
-    position: fixed;
-    top: 0;
-    right: -100%; 
-    width: 400px;
-    height: 100%;
-    background-color: rgb(235, 233, 233);
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease;
-    z-index: 1000;
-    overflow: auto;
-    box-sizing: border-box; 
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 400px;
+  height: 100%;
+  background-color: rgb(235, 233, 233);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  overflow: auto;
+  box-sizing: border-box;
 
-  }
+}
+
 .carrinho-lateral::-webkit-scrollbar {
-    width: 0px;
+  width: 0px;
 }
 
 .carrinho-lateral {
-    scrollbar-width: none;
+  scrollbar-width: none;
 }
-  
+
 .carrinho-lateral.open {
-    right: 0; 
+  right: 0;
 }
-  
+
 .carrinho-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #333333;
-  }
-  
-  .carrinho-conteudo {
-    padding: 1rem;
-  }
-  
-  .close-button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #4A0072 
-  }
-  .close-button:hover {
-    background: none;
-    font-weight: bold;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #333333;
+}
 
-  .carrinho-item span {
-    padding: 5px;
-  }  
+.carrinho-conteudo {
+  padding: 1rem;
+}
 
-  .carrinho-total {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: right;
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #4A0072
+}
 
-  }
-  .trash-icon {
-    font-size: 16px;
-    color: red;
-    background: none;
-    border: none;
-    cursor: pointer;
+.close-button:hover {
+  background: none;
+  font-weight: bold;
+}
+
+.carrinho-item span {
+  padding: 5px;
+}
+
+.carrinho-total {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+
+}
+
+.trash-icon {
+  font-size: 16px;
+  color: red;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .trash-icon:hover {
-    color: darkred;
+  color: darkred;
 }
+
 .botoes {
   margin: 20px;
   display: flex;
@@ -80,12 +84,14 @@
 
 .add-to-cart-button {
   width: 160px;
-  background-color: #9C27B0 ;
+  background-color: #9C27B0;
 
 }
+
 .pagamento:hover {
   background-color: green;
 }
+
 .carrinho-tabela {
   width: 100%;
   border-collapse: collapse;
@@ -100,7 +106,7 @@
 }
 
 .carrinho-tabela th {
-  background-color: #4A0072 ;
+  background-color: #4A0072;
   color: white;
   font-weight: bold;
 }

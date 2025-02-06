@@ -134,3 +134,28 @@
     }
     
 }
+.animacao-check {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #047a00;
+    border-radius: 50%;
+    padding: 10px;
+    animation: fadeUp 2s ease-out;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, 0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+}

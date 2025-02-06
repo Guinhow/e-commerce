@@ -5,7 +5,7 @@ import qrcode from "../products/qr-code.jpeg";
 
 const Pagamento = () => {
   const [carrinhoItens, setCarrinhoItens] = useState([]);
-  const [abaAtiva, setAbaAtiva] = useState("cartao"); 
+  const [abaAtiva, setAbaAtiva] = useState("cartao");
   const navigate = useNavigate();
 
   const carregarCarrinho = () => {
@@ -15,7 +15,7 @@ const Pagamento = () => {
 
   useEffect(() => {
     carregarCarrinho();
-    window.addEventListener("storage", carregarCarrinho); 
+    window.addEventListener("storage", carregarCarrinho);
 
     return () => {
       window.removeEventListener("storage", carregarCarrinho);
@@ -69,13 +69,13 @@ const Pagamento = () => {
       </div>
       <div className="formulario-pagamento">
         <div className="abas-pagamento">
-          <button 
+          <button
             className={abaAtiva === "cartao" ? "aba ativa" : "aba"}
             onClick={() => setAbaAtiva("cartao")}
           >
             Cartão de Crédito
           </button>
-          <button 
+          <button
             className={abaAtiva === "pix" ? "aba ativa" : "aba"}
             onClick={() => setAbaAtiva("pix")}
           >

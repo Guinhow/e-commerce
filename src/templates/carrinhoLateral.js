@@ -3,13 +3,12 @@ import "./carrinhoLateral.css";
 import { useNavigate } from "react-router-dom";
 
 
-const CarrinhoLateral = ({ isOpen, onClose, itens , removeFromCart , clearCart }) => {
+const CarrinhoLateral = ({ isOpen, onClose, itens, removeFromCart, clearCart }) => {
   const navigate = useNavigate();
-
 
   const calcularTotal = () => {
     return itens.reduce((acc, item) => {
-      const quantidade = item.quantidade || 1; 
+      const quantidade = item.quantidade || 1;
       return acc + item.preço * quantidade;
     }, 0);
   };
@@ -28,14 +27,6 @@ const CarrinhoLateral = ({ isOpen, onClose, itens , removeFromCart , clearCart }
         ) : (
 
           <table className="carrinho-tabela">
-            {/* <thead>
-              <tr>
-                <th>Produto</th>
-                <th>Qnt.</th>
-                <th>Valor</th>
-                <th>Ação</th>
-              </tr>
-            </thead> */}
             <tbody>
               {itens.map((item) => (
                 <tr key={item.id}>
@@ -50,14 +41,14 @@ const CarrinhoLateral = ({ isOpen, onClose, itens , removeFromCart , clearCart }
             </tbody>
           </table>
         )}
-         <div className="carrinho-total">
-            <strong>Total:</strong> R$ {calcularTotal().toFixed(2)}
-          </div>
-          <div className="botoes">
+        <div className="carrinho-total">
+          <strong>Total:</strong> R$ {calcularTotal().toFixed(2)}
+        </div>
+        <div className="botoes">
           {itens.length > 0 && (
-            <button className="add-to-cart-button" onClick={clearCart}>Limpar carrinho</button> )}
-            <button className="add-to-cart-button pagamento"  onClick={() => {onClose() ;navigate("/pagamento")}}>Pagamento</button>
-          </div>
+            <button className="add-to-cart-button" onClick={clearCart}>Limpar carrinho</button>)}
+          <button className="add-to-cart-button pagamento" onClick={() => { onClose(); navigate("/pagamento") }}>Pagamento</button>
+        </div>
       </div>
     </div>
   );

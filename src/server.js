@@ -10,16 +10,13 @@ app.use(express.json());
 app.post('/submit-form', (req, res) => {
     const { nome, email, mensagem } = req.body;
 
-
     const filePath = path.join(__dirname, 'submissions.json');
-
 
     fs.readFile(filePath, 'utf-8', (err, data) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ message: 'Erro ao salvar os dados' });
         }
-
 
         const submissions = data ? JSON.parse(data) : [];
 

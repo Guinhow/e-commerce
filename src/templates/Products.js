@@ -4,7 +4,7 @@ import Filtros from './Filtros.js';
 import ModalProduto from './modalProduto.js';
 import '../App.css';
 
-const Products = ({ adicionarAoCarrinho }) => { 
+const Products = ({ adicionarAoCarrinho }) => {
     const [filteredProducts, setFilteredProducts] = useState(pesquisa);
     const [currentImageIndex, setCurrentImageIndex] = useState({});
     const [modalOpen, setModalOpen] = useState(false);
@@ -53,8 +53,8 @@ const Products = ({ adicionarAoCarrinho }) => {
                                 key={produto.id}
                                 className="product-item"
                                 onClick={() => {
-                                    setProdutoSelecionado(produto); 
-                                    setModalOpen(true); 
+                                    setProdutoSelecionado(produto);
+                                    setModalOpen(true);
                                 }}
                             >
                                 <div className="product-image-wrapper">
@@ -85,7 +85,7 @@ const Products = ({ adicionarAoCarrinho }) => {
                     isOpen={modalOpen}
                     onClose={() => setModalOpen(false)}
                     addToCart={(produto) => {
-                        adicionarAoCarrinho(produto); 
+                        adicionarAoCarrinho(produto);
                         // setModalOpen(false); 
                     }}
                 />
