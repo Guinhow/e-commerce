@@ -18,6 +18,8 @@ const subMenu = [
 const LoginModal = ({ onClose, onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -34,7 +36,7 @@ const LoginModal = ({ onClose, onLogin }) => {
 
   
   const handleLogin = () => {
-
+    
       if (username === 'usuario' && password === 'senha') { 
         onLogin();
         onClose();
@@ -44,6 +46,14 @@ const LoginModal = ({ onClose, onLogin }) => {
       }
     
   };
+  function logout() {
+
+    setIsAuthenticated(false); 
+    localStorage.setItem("isAuthenticated", "false"); 
+    alert('Logout efetuado com sucesso!');
+    navigate("/")
+  };
+  
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -63,6 +73,8 @@ const LoginModal = ({ onClose, onLogin }) => {
         />
         <button className='botao-login' onClick={handleLogin}>Entrar</button>
         <button className='botao-login' onClick={onClose}>Fechar</button>
+        <button className='botao-login' onClick={logout}>Logout</button>
+
       </div>
     </div>
   );
@@ -70,41 +82,39 @@ const LoginModal = ({ onClose, onLogin }) => {
 
 const Header = ({ searchTerm, handleSearch ,handleSearchEnter, onCarrinhoClick  }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
+  const [menuAberto, setMenuAberto] = useState(false);
+
+  const toggleMenu = () => {
+      setMenuAberto(!menuAberto);
+  };
+
+  const fecharMenu = () => {
+      setMenuAberto(false);
+  };
 
   const handleLoginSuccess = () => {
     alert('Login efetuado com sucesso!');
   };
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-function logout() {
-
-    setIsAuthenticated(false); 
-    localStorage.setItem("isAuthenticated", "false"); 
-    alert('Logout efetuado com sucesso!');
-    navigate("/")
-};
   
 
   return (
     <div className="header">
+      <button className="menu-toggle" onClick={toggleMenu}>☰</button>
       <div className="logo">
         <img src={Logo} alt="Logo" />
         <p>copatto</p>
       </div>
-      <nav className="navbar">
-        {/* <input type="text" className="search-bar" placeholder="Pesquisar..." value={searchTerm} onChange={handleSearch} onKeyDown={handleSearchEnter} /> */}
+        <nav className={`navbar ${menuAberto ? 'ativo' : ''}`}>
         <ul className="lista">
           {subMenu.map((x) => (<li className='itens' key={x.name}>
-            <Link to={x.path} className='menu-link'>{x.name}</Link>
+            <Link to={x.path} className='menu-link' onClick={fecharMenu}>{x.name}</Link>
           </li>))}
         </ul>
       </nav>
       <div className="usuario">
         <img src={perfil} className="itens" alt="login" onClick={() => setIsModalOpen(true)} />
         <img src={sacola} className="itens" alt="sacola" onClick={onCarrinhoClick}/>
-        <button onClick={logout} className="itens botao">Logout</button>
       </div>
       {isModalOpen && (
         <LoginModal

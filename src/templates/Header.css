@@ -1,49 +1,15 @@
 .header {
+    top: 0;
+    left: 0;
     position: fixed;
     height: 13vh;
     min-width: 100vw;
-    /* background-image: linear-gradient(90deg, rgb(94, 92, 92), black); */
     background-color: #6A0DAD ;
     align-items: center;
     justify-content: space-between;
     display: flex;
     padding: 0;
     z-index: 1000;
-}
-
-.navbar {
-    padding: 0;
-    margin: 0;
-    flex-direction: column; 
-    align-items: flex-start; 
-}
-.search-bar {
-    margin-left: 35px;
-    margin-top: 40px;
-    height: 30px; 
-    border: 2px solid #2f3030; 
-    border-radius: 0.5em; 
-    padding: 0 10px; 
-    margin-right: 20px; 
-    font-size: 16px; 
-    width: 80%;
-    color: #4A0072 ; 
-    background-color: white; 
-    transition: border-color 0.3s; 
-    margin-bottom: 0px;
-}
-
-.search-bar:focus {
-    outline: none; 
-    border-color: #BA68C8 ; 
-}
-
-.lista {
-    display: flex;
-    list-style: none;
-    padding-right: 230px;
-    margin-top: 50px;
-    
 }
   
 .itens  {
@@ -111,3 +77,99 @@
     font-size: 20px; 
 }
 
+
+.navbar {
+    position: fixed;
+    top: 13vh;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #6A0DAD; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.navbar.ativo {
+    left: 0;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    text-align: center;
+
+}
+
+.menu-link {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu-link:hover {
+    color: #BA68C8;
+}
+
+
+.menu-toggle {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    display: none;
+    width: 50px;
+}
+
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        
+    }
+
+    .lista {
+        flex-direction: column;
+        align-items: center;
+        margin-top: -250px;
+    }
+    .logo {
+        width: 80px;
+        height: auto;
+        display: flex;
+        color: #cecece;
+        align-items: flex-end; 
+        margin-bottom: 20px;
+        margin-right: 120px;
+    }
+}
+@media (min-width: 769px) {
+    .navbar {
+        position: static;
+        height: auto;
+        width: auto;
+        background: none;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    .lista {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .menu-toggle {
+        display: none; 
+    }
+}

@@ -116,3 +116,21 @@
     transition: background 0.3s;
 }
 
+@media (max-width: 768px) {
+    .modal-body {
+        transform: scale(0.92);
+    }
+    .modal-close {
+        top: 0;
+        right: -110px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #4A0072 ;
+    }
+    .image-controls {
+        transform: translateY(-50%); 
+    }
+    
+}
